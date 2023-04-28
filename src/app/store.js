@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]:apiSlice.reducer,
     auth:authSliceReducer,
-    video:videoSlice
+    videos:videoSlice
   },
   devTools:process.env.NODE_ENV!=='production',
   middleware:(getDefaultMiddlewares)=>getDefaultMiddlewares().concat(apiSlice.middleware)

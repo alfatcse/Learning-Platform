@@ -7,9 +7,7 @@ import "../../../style/output.css";
 import { Link } from "react-router-dom";
 const Navbar = () => {
   const { user } = useSelector((state) => state.auth) || {};
-  console.log(user);
   const url = window.location.pathname;
-  console.log(url);
   const [Url, setUrl] = useState("");
   useEffect(() => {
     setUrl(url);
@@ -29,8 +27,7 @@ const Navbar = () => {
         </Link>
        
         <div className="flex items-center gap-3">
-          {Url === "/home/leaderboard" && <Link to={"/home"}>Courses</Link>}
-          {Url === "/home" && <Link to={"/home/leaderboard"}>Leaderboard</Link>}
+          {Url === "/home/leaderboard" ? <Link to={"/home"}>Courses</Link>:<Link to={"/home/leaderboard"}>Leaderboard</Link>}
           <h2 className="font-bold">{user?.name}</h2>
           <button
             onClick={handleLogOut}

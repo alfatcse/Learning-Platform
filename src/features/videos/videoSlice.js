@@ -6,8 +6,10 @@ const videoSlice=createSlice({
     name:"videos",
     initialState,
     reducers:{
-        
+        getVideos:(state,action)=>{
+            state.videos=action.payload
+        }
     }
 })
-export const {}=videoSlice.actions;
+export const {getVideos}=videoSlice.actions;
 export default videoSlice.reducer;

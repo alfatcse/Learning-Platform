@@ -1,6 +1,6 @@
 import React from "react";
-import { Route, Router, RouterProvider, Routes } from "react-router";
-import { BrowserRouter, createBrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router";
+import { createBrowserRouter } from "react-router-dom";
 import "./App.css";
 import useAuthCheck from "./hooks/useAuthCheck";
 import CoursePlayer from "./Components/Home/CoursePlayer/CoursePlayer";
@@ -10,6 +10,7 @@ import StudentRegistration from "./Components/Registration/StudentRegistration";
 import StudentLogin from "./Components/StudentLogin/StudentLogin";
 import PrivateRoute from "./Utils/PrivateRoute";
 import PublicRoute from "./Utils/PublicRoute";
+import CurrentVideo from "./Components/Home/CoursePlayer/CurrentVideo/CurrentVideo";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -31,10 +32,19 @@ function App() {
           path: "/home",
           element: (
             <PrivateRoute>
-              {" "}
               <CoursePlayer></CoursePlayer>
             </PrivateRoute>
           ),
+          children: [
+            {
+              path: "/home/:vedioId",
+              element: (
+                <PrivateRoute>
+                  <CurrentVideo></CurrentVideo>
+                </PrivateRoute>
+              ),
+            },
+          ],
         },
       ],
     },
