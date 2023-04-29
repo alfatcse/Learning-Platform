@@ -25,7 +25,6 @@ const Navbar = () => {
         <Link to={'/home'}>
         <img className="h-10" src={logo} alt="logo" />
         </Link>
-       
         <div className="flex items-center gap-3">
           {Url === "/home/leaderboard" ? <Link to={"/home"}>Courses</Link>:<Link to={"/home/leaderboard"}>Leaderboard</Link>}
           <h2 className="font-bold">{user?.name}</h2>

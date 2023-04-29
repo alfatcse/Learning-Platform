@@ -11,6 +11,7 @@ import StudentLogin from "./Components/StudentLogin/StudentLogin";
 import PrivateRoute from "./Utils/PrivateRoute";
 import PublicRoute from "./Utils/PublicRoute";
 import CurrentVideo from "./Components/Home/CoursePlayer/CurrentVideo/CurrentVideo";
+import Quizzes from "./Components/Home/Quizzes/Quizzes";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -43,8 +44,16 @@ function App() {
                   <CurrentVideo></CurrentVideo>
                 </PrivateRoute>
               ),
-            },
+            }
           ],
+        },
+        {
+          path: "/home/quizzes/:quizzeid",
+          element: (
+            <PrivateRoute>
+              <Quizzes></Quizzes>
+            </PrivateRoute>
+          ),
         },
       ],
     },

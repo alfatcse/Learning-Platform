@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 const Video = ({video}) => {
     console.log('vvvvv',video);
     return (
@@ -9,7 +10,6 @@ const Video = ({video}) => {
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen></iframe>
-
         <div>
             <h1 className="text-lg font-semibold tracking-tight text-slate-100">
                {video?.title}
@@ -18,21 +18,17 @@ const Video = ({video}) => {
                 Uploaded on {moment(video?.createdAt).format('ll')}</h2>
 
             <div className="flex gap-4">
-                <a href="#"
+                <Link 
                     className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
-                    এসাইনমেন্ট
-                </a>
-
-                <a href="./Quiz.html"
-                    className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">কুইজে
-                    অংশগ্রহণ
-                    করুন</a>
+                    {/* এসাইনমেন্ট */} Assignment
+                </Link>
+                <Link to={`/home/quizzes/${video?.id}`}
+                    className="px-3 font-bold py-1 border border-cyan text-cyan rounded-full text-sm hover:bg-cyan hover:text-primary">
+                    {/*কুইজে অংশগ্রহণ করুন*/}Quiz </Link> 
             </div>
             <p className="mt-4 text-sm text-slate-400 leading-6">
                 {video?.description}
             </p>
-
-
         </div>
     </div>
     );
