@@ -12,10 +12,10 @@ import PrivateRoute from "./Utils/PrivateRoute";
 import PublicRoute from "./Utils/PublicRoute";
 import CurrentVideo from "./Components/Home/CoursePlayer/CurrentVideo/CurrentVideo";
 import Quizzes from "./Components/Home/Quizzes/Quizzes";
+import Assignment from "./Components/Home/CoursePlayer/CurrentVideo/Video/Assignment";
 
 function App() {
   const authChecked = useAuthCheck();
-  console.log(authChecked);
   const router = createBrowserRouter([
     {
       path: "/home",
@@ -55,6 +55,10 @@ function App() {
             </PrivateRoute>
           ),
         },
+        {
+          path:"/home/assignment/:assignmentId",
+          element:<PrivateRoute><Assignment></Assignment></PrivateRoute>
+        }
       ],
     },
     {
