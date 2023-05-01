@@ -9,21 +9,20 @@ const StudentLogin = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate=useNavigate();
-  const [login, { data, isLoading, error: responseError }] = useLoginMutation();
+  const [login, { data, isLoading, error: responseError,isSuccess }] = useLoginMutation();
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(email, password);
-    login({ email, password });
+    login({ email, password });  
   };
   const c=true
   useEffect(() => {
     if (responseError?.data) {
       setError(responseError?.data);
     }
-    if(data?.accessToken&&data?.user){
+    if(data?.accessToken&&data?.user&&isSuccess){
         navigate('/home')
     }
-  }, [responseError,navigate,data]);
+  }, [responseError,navigate,data,isSuccess]);
   return (
     <section className="py-6 bg-primary h-screen grid place-items-center">
       <div className="mx-auto max-w-md px-5 lg:px-0">

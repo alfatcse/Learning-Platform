@@ -9,8 +9,8 @@ import { useSelector } from "react-redux";
 const Quizzes = () => {
   const { quizzeid } = useParams();
   const { data, isError, isLoading, error } = useGetQuizzesQuery(quizzeid);
-  const [postQuizMark,{isLoading:LoadingpostQuizMark,error:PostError}]=usePostQuizMarkMutation()
-  console.log('data',data);
+  const [postQuizMark,{isLoading:LoadingpostQuizMark,error:PostError,isSuccess}]=usePostQuizMarkMutation()
+  
   const { user } = useSelector((state) => state.auth) || {};
   let content = null,
     Vediotitle;
@@ -42,7 +42,7 @@ const Quizzes = () => {
         mark:totalCorrect*5
     }
     postQuizMark(qData);
-    console.log('total',qData);
+    console.log('total',isSuccess);
   }
   return (
     <div className="mx-auto max-w-7xl px-5 lg:px-0">

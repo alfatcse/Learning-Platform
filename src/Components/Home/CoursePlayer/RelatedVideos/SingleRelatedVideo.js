@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SingleVideo = ({video}) => {
-    console.log(video);
-
+    
     return (
         <div className="w-full flex flex-row gap-2 cursor-pointer hover:bg-slate-900 p-2">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

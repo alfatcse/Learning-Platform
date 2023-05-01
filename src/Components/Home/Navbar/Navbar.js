@@ -8,10 +8,15 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const { user } = useSelector((state) => state.auth) || {};
   const url = window.location.pathname;
+
   const [Url, setUrl] = useState("");
+  let logoutBorder='border border-cyan hover:bg-cyan';
   useEffect(() => {
     setUrl(url);
   }, [url]);
+  if(user?.role==='admin'){
+    logoutBorder='border border-red hover:bg-red-700'
+  }
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogOut = () => {
@@ -22,15 +27,17 @@ const Navbar = () => {
   return (
     <nav className="shadow-md">
       <div className="max-w-7xl px-5 lg:px-0 mx-auto flex justify-between py-3">
-        <Link to={'/home'}>
+        <Link to={ user?.role==='student'? '/home':'/admin/dashboard'}>
         <img className="h-10" src={logo} alt="logo" />
         </Link>
         <div className="flex items-center gap-3">
-          {Url === "/home/leaderboard" ? <Link to={"/home"}>Courses</Link>:<Link to={"/home/leaderboard"}>Leaderboard</Link>}
+          {
+            user?.role==='student'&& (Url === "/home/leaderboard" ? <Link to={"/home"}>Courses</Link>:<Link to={"/home/leaderboard"}>Leaderboard</Link>)
+          }
           <h2 className="font-bold">{user?.name}</h2>
           <button
             onClick={handleLogOut}
-            className="flex gap-2 border border-cyan items-center px-4 py-1 rounded-full text-sm transition-all hover:bg-cyan "
+            className={`flex gap-2  items-center px-4 py-1 rounded-full text-sm transition-all ${logoutBorder}`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

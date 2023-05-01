@@ -24,7 +24,6 @@ const CurrentVideo = () => {
         VID=vedioId
     }
     const {data:video,isError, isLoading, error }=useGetVideoQuery(VID);
-    console.log('vvv',video);
     if(isLoading){
         content=<Loading></Loading>
     }

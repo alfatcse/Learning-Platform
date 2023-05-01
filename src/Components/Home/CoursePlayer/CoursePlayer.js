@@ -5,7 +5,6 @@ import AllVideos from "./RelatedVideos/RelatedVideos";
 
 const CoursePlayer = () => {
   const url = window.location.pathname;
-  console.log(url);
   const [Url, setUrl] = useState("");
   useEffect(() => {
     setUrl(url);

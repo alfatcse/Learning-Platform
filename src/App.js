@@ -13,6 +13,14 @@ import PublicRoute from "./Utils/PublicRoute";
 import CurrentVideo from "./Components/Home/CoursePlayer/CurrentVideo/CurrentVideo";
 import Quizzes from "./Components/Home/Quizzes/Quizzes";
 import Assignment from "./Components/Home/CoursePlayer/CurrentVideo/Video/Assignment";
+import AdminLogin from "./Components/AdminLogin/AdminLogin";
+import Dashboard from "./Components/AminDashboard/Dashboard";
+import Admin from "./Components/Admin/Admin";
+import VideosPage from "./Components/AminDashboard/Videos/VideosPage";
+import QuizzesPage from "./Components/AminDashboard/Quizzes/QuizzesPage";
+import AdminRoute from "./Utils/AdminRoute";
+import AssignmentUpload from "./Components/AminDashboard/Assignment/AssignmentUpload/AssignmentUpload";
+import AssignmentMark from "./Components/AminDashboard/Assignment/AssignmentMark/AssignmentMark";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -44,7 +52,7 @@ function App() {
                   <CurrentVideo></CurrentVideo>
                 </PrivateRoute>
               ),
-            }
+            },
           ],
         },
         {
@@ -56,9 +64,13 @@ function App() {
           ),
         },
         {
-          path:"/home/assignment/:assignmentId",
-          element:<PrivateRoute><Assignment></Assignment></PrivateRoute>
-        }
+          path: "/home/assignment/:assignmentId",
+          element: (
+            <PrivateRoute>
+              <Assignment></Assignment>
+            </PrivateRoute>
+          ),
+        },
       ],
     },
     {
@@ -76,6 +88,40 @@ function App() {
           <StudentRegistration></StudentRegistration>
         </PublicRoute>
       ),
+    },
+    {
+      path: "/adminlogin",
+      element: (
+       
+          <AdminLogin></AdminLogin>
+        
+      ),
+    },
+    {
+      path: "/admin",
+      element: <Admin></Admin>  ,
+      children: [
+        {
+          path: "/admin/dashboard",
+          element: <Dashboard></Dashboard>,
+        },
+        {
+          path: "/admin/videos",
+          element: <VideosPage></VideosPage>,
+        },
+        {
+          path: "/admin/quizzes",
+          element: <QuizzesPage></QuizzesPage>,
+        },
+        {
+          path:"/admin/assignmentupload",
+          element:<AssignmentUpload></AssignmentUpload>
+        },
+        {
+          path:"/admin/assignmentmark",
+          element:<AssignmentMark></AssignmentMark>
+        }
+      ],
     },
   ]);
   return (

@@ -12,7 +12,7 @@ const StudentRegistration = () => {
   const [error, setError] = useState("");
   const c=true;
   const navigate=useNavigate();
-  const [register, { data, isLoading, error: responseError }] =
+  const [register, { data, isLoading, error: responseError,isSuccess }] =
     useRegisterMutation();
   useEffect(() => {
     if (responseError?.data) {
@@ -35,6 +35,7 @@ const StudentRegistration = () => {
       role: "student",
       name: name,
     });
+    console.log(isSuccess);
   };
   return (
     <section className="py-6 bg-primary h-screen grid place-items-center">

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { quizzeCalculation } from "../../../features/quizze/quizzeSlice";
 const Quizze = ({ quizze }) => {
-  console.log(quizze);
+  
   let content;
   const [OPclick,setOPClick]=useState(false);
   const dispatch=useDispatch();
   const  handleClick=({op,quizze})=>{
-    console.log('click',op,quizze);
+    
     if(op.isCorrect===true){
         dispatch(quizzeCalculation(true))
     }

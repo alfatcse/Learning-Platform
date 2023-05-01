@@ -11,6 +11,10 @@ export const assignmentAPI = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
+      async onQueryStarted(arg,{queryFulfilled,dispatch}){
+        const q=await queryFulfilled
+        console.log('postAss',q?.data);
+      }
     }),
   }),
 });
