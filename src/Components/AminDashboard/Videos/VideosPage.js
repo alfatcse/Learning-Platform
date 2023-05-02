@@ -1,4 +1,6 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { useGetVideosQuery } from "../../../features/videos/videoAPI";
 import Error from "../../UI/Error";
 import Loading from "../../UI/Loading";
@@ -11,7 +13,7 @@ const VideosPage = () => {
     isLoading: AllVLoading,
     error: AllVError,
   } = useGetVideosQuery();
-  
+  const {videos}=useSelector((state)=>state.videos)||{videos:[]}
   let content = null;
   if (AllVLoading) {
     content = <Loading></Loading>;
@@ -24,14 +26,14 @@ const VideosPage = () => {
     noVideo = <h1>No video found</h1>;
   }
   if (!AllVLoading && !isAllVError && Allvideo?.length > 0) {
-    content = Allvideo.map((allV) => <VideoInfo video={allV}></VideoInfo>);
+    content = videos?.map((allV) => <VideoInfo video={allV}></VideoInfo>);
   }
   return (
     <section className="py-6 bg-primary">
       <div className="mx-auto max-w-full px-5 lg:px-20">
         <div className="px-3 py-20 bg-opacity-10">
           <div className="w-full flex">
-            <button className="btn ml-auto">Add Video</button>
+            <button  className="btn ml-auto"><Link to={'/admin/addvideo'}>Add Video</Link> </button>
           </div>
           <div className="overflow-x-auto mt-4">
             <table className="divide-y-1 text-base divide-gray-600 w-full">
@@ -48,7 +50,7 @@ const VideosPage = () => {
           {noVideo && <div>No video found</div>}
         </div>
       </div>
-    </section>
+    </section> 
   );
 };
 

@@ -243,7 +243,25 @@ Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/
 :-moz-ui-invalid {
   box-shadow: none;
 }
+form .fieldContainer {
+  display: grid;
+  grid-template-columns: 200px minmax(300px, 1fr);
+  align-items: center;
+}
 
+form .fieldContainer select,
+  form input {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+form .fieldContainer label {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(31 41 55 / var(--tw-text-opacity));
+}
 .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;

@@ -21,6 +21,7 @@ import QuizzesPage from "./Components/AminDashboard/Quizzes/QuizzesPage";
 import AdminRoute from "./Utils/AdminRoute";
 import AssignmentUpload from "./Components/AminDashboard/Assignment/AssignmentUpload/AssignmentUpload";
 import AssignmentMark from "./Components/AminDashboard/Assignment/AssignmentMark/AssignmentMark";
+import AddVideo from "./Components/AminDashboard/Videos/AddVideo";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -120,6 +121,10 @@ function App() {
         {
           path:"/admin/assignmentmark",
           element:<AssignmentMark></AssignmentMark>
+        },
+        {
+          path:"/admin/addvideo",
+          element:<AddVideo></AddVideo>
         }
       ],
     },
