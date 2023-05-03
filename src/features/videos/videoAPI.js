@@ -1,10 +1,11 @@
 import { apiSlice } from "../api/apiSlice";
-import { getVideos, deleteVideo, postVideo } from "./videoSlice";
+import { getVideos, deleteVideo, postVideo, editVideo } from "./videoSlice";
 
 export const videoAPI = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getVideos: builder.query({
       query: () => "/videos",
+      providesTags: ["videos"],
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
@@ -14,6 +15,7 @@ export const videoAPI = apiSlice.injectEndpoints({
     }),
     getVideo: builder.query({
       query: (id) => `/videos/${id}`,
+      providesTags: ["video"],
     }),
     deleteVideo: builder.mutation({
       query: ({ id }) => ({
@@ -38,11 +40,19 @@ export const videoAPI = apiSlice.injectEndpoints({
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
           const result = await queryFulfilled;
-          if(result?.data){
-            dispatch(postVideo(result?.data))
+          if (result?.data) {
+            dispatch(postVideo(result?.data));
           }
         } catch (er) {}
       },
+    }),
+    editVideo: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/videos/${id}`,
+        method: "PATCH",
+        body: data,
+      }),
+       invalidatesTags: ["videos",'video'],
     }),
   }),
 });
@@ -51,4 +61,5 @@ export const {
   useGetVideoQuery,
   useDeleteVideoMutation,
   usePostVideoMutation,
+  useEditVideoMutation,
 } = videoAPI;
