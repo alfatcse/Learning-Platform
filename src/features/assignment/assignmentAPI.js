@@ -4,6 +4,15 @@ export const assignmentAPI = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAssignment: builder.query({
       query: (id) => `/assignments/${id}`,
+      providesTags:['assignmentMark']
+    }),
+    getAllAssignment:builder.query({
+      query:()=>'/assignments',
+      providesTags:['assignments']
+    }),
+    getAssignments: builder.query({
+       query:()=>'/assignmentMark',
+       providesTags:['assignmentMarks']
     }),
     postAssignment: builder.mutation({
       query: (data) => ({
@@ -11,11 +20,20 @@ export const assignmentAPI = apiSlice.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      async onQueryStarted(arg,{queryFulfilled,dispatch}){
-        const q=await queryFulfilled
-        console.log('postAss',q?.data);
-      }
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        const q = await queryFulfilled;
+        console.log("postAss", q?.data);
+      },
     }),
+    editAssignment:builder.mutation({
+      query:({id,data})=>({
+        url:`/assignmentMark/${id}`,
+        method:'PATCH',
+        body:data
+      }),
+      invalidatesTags:['assignmentMarks','assignmentMark']
+    })
   }),
 });
-export const { useGetAssignmentQuery ,usePostAssignmentMutation} = assignmentAPI;
+export const { useGetAssignmentQuery, useGetAllAssignmentQuery,usePostAssignmentMutation,useGetAssignmentsQuery ,useEditAssignmentMutation} =
+  assignmentAPI;

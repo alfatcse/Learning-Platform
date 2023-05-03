@@ -20,6 +20,6 @@ export const apiSlice=createApi({
        }
        return result;
     },
-    tagTypes:['videos','video'],
+    tagTypes:['videos','video','assignmentMarks','assignmentMark','assignments'],
     endpoints:(builder)=>({})
 })
