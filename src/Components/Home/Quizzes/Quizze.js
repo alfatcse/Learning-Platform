@@ -2,24 +2,25 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { quizzeCalculation } from "../../../features/quizze/quizzeSlice";
 const Quizze = ({ quizze }) => {
-  
   let content;
-  const [OPclick,setOPClick]=useState(false);
-  const dispatch=useDispatch();
-  const  handleClick=({op,quizze})=>{
-    
-    if(op.isCorrect===true){
-        dispatch(quizzeCalculation(true))
+  const [OPclick, setOPClick] = useState(false);
+  const dispatch = useDispatch();
+  const handleClick = ({ op, quizze }) => {
+    if (op.isCorrect === true) {
+      dispatch(quizzeCalculation(true));
     }
-    setOPClick(true)
-  }
+    setOPClick(true);
+  };
   content = quizze?.options?.map((op) => (
-    <label >
-      <input disabled={OPclick} onClick={()=>handleClick({op,quizze})} type="checkbox" />
+    <label>
+      <input
+        disabled={OPclick}
+        onClick={() => handleClick({ op, quizze })}
+        type="checkbox"
+      />
       {op?.option}
     </label>
   ));
-
   return (
     <div className="quiz">
       <h4 className="question">{quizze?.question}</h4>

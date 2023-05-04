@@ -23,6 +23,8 @@ import AssignmentUpload from "./Components/AminDashboard/Assignment/AssignmentUp
 import AssignmentMark from "./Components/AminDashboard/Assignment/AssignmentMark/AssignmentMark";
 import AddVideo from "./Components/AminDashboard/Videos/AddVideo";
 import EditVideo from "./Components/AminDashboard/Videos/EditVideo";
+import AddAssignment from "./Components/AminDashboard/Assignment/AssignmentUpload/AddAssignment";
+import EditAssignment from "./Components/AminDashboard/Assignment/AssignmentUpload/EditAssignment";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -118,6 +120,14 @@ function App() {
         {
           path:"/admin/assignmentupload",
           element:<AssignmentUpload></AssignmentUpload>
+        },
+        {
+          path:"/admin/editassignment/:assignmentid",
+          element:<EditAssignment></EditAssignment>
+        },
+        {
+          path:"/admin/assignmentpost",
+          element:<AddAssignment></AddAssignment>
         },
         {
           path:"/admin/assignmentmark",
