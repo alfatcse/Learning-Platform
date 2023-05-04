@@ -25,6 +25,7 @@ import AddVideo from "./Components/AminDashboard/Videos/AddVideo";
 import EditVideo from "./Components/AminDashboard/Videos/EditVideo";
 import AddAssignment from "./Components/AminDashboard/Assignment/AssignmentUpload/AddAssignment";
 import EditAssignment from "./Components/AminDashboard/Assignment/AssignmentUpload/EditAssignment";
+import UploadQuzze from "./Components/AminDashboard/Quizzes/UploadQuzze";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -116,6 +117,10 @@ function App() {
         {
           path: "/admin/quizzes",
           element: <QuizzesPage></QuizzesPage>,
+        },
+        {
+          path:'/admin/uploadquizze',
+          element:<UploadQuzze></UploadQuzze>
         },
         {
           path:"/admin/assignmentupload",

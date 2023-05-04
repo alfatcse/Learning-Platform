@@ -75,8 +75,9 @@ const AddAssignment = () => {
               style={{ color: "white" }}
               className="mx-8 login-input rounded-t-md rounded-b-md"
               onChange={(e) => setVideo(e.target.value)}
+              required
             >
-              <option> Submit Your Assignment on</option>
+              <option value=''> Submit Your Assignment on</option>
               {content}
             </select>
           </div>

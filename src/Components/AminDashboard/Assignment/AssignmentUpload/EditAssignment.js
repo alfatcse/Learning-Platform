@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../../../assets/image/learningportal.svg";
 import { useNavigate, useParams } from "react-router";
-import { useEditAssignmentsMutation, useGetAssignmentQuery } from "../../../../features/assignment/assignmentAPI";
+import {
+  useEditAssignmentsMutation,
+  useGetAssignmentQuery,
+} from "../../../../features/assignment/assignmentAPI";
 const EditAssignment = () => {
   const { assignmentid } = useParams();
   const { data } = useGetAssignmentQuery(assignmentid);
   const [title, setTitle] = useState(data?.title);
   const [totalmark, settotalmark] = useState(data?.totalMark);
-  const [editAssignments,{isSuccess}]=useEditAssignmentsMutation();
+  const [editAssignments, { isSuccess }] = useEditAssignmentsMutation();
   useEffect(() => {
     setTitle(data?.title);
     settotalmark(data?.totalMark);
@@ -18,15 +21,17 @@ const EditAssignment = () => {
       title,
       totalMark: totalmark * 1,
     };
-    editAssignments({id:assignmentid,data:d})
+    editAssignments({ id: assignmentid, data: d });
+    setTitle("");
+    settotalmark("");
     console.log("data", d);
   };
-  const navigate=useNavigate();
-  useEffect(()=>{
-    if(isSuccess){
-        navigate('/admin/assignmentupload')
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/admin/assignmentupload");
     }
-  },[isSuccess,navigate])
+  }, [isSuccess, navigate]);
   return (
     <section className="py-9 bg-primary h-screen grid place-items-center">
       <div className="mx-auto max-w-md px-2 lg:px-2">
