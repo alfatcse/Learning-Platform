@@ -9,15 +9,24 @@ import MyPosition from "./MyPosition";
 import TopTwenty from "./TopTwenty";
 const Leaderboard = () => {
   const { assimentMark } = useSelector((state) => state.leaderboard) || {};
+  console.log("assimentMark", assimentMark);
   const { quizzeMark } = useSelector((state) => state.leaderboard) || {};
+  console.log("quizzeMark", quizzeMark);
   const { user } = useSelector((state) => state.auth) || {};
   const { isLoading: ALoading, isError } = useGetquizzeMarkQuery();
   const { isLoading: QLoading, isError: QError } = useGetassignmentMarkQuery();
   const { data: students, isLoading: SLoading } = useGetStudentsQuery();
+  console.log("student", students);
   let topTwenty = [];
-  if (!ALoading && !QLoading && !SLoading) {
+  if (
+    !ALoading &&
+    !QLoading &&
+    !SLoading &&
+    students.length > 0 &&
+    assimentMark.length > 0
+  ) {
     students.map((student) => {
-      assimentMark.map((AMark) => {
+      assimentMark?.map((AMark) => {
         if (student.id === AMark.student_id && AMark.status === "published") {
           if (topTwenty?.length === 0) {
             const d = {
@@ -29,12 +38,11 @@ const Leaderboard = () => {
             let f = 0;
             topTwenty.map((t) => {
               if (t.name === student.name) {
-                t.AssignmentMark = t.AssignmentMark + AMark.mark;
+                t.AssignmentMark = t?.AssignmentMark + AMark?.mark;
                 f = 1;
               }
             });
             if (f === 0) {
-              console.log(student.name);
               const d = {
                 name: student.name,
                 AssignmentMark: AMark.mark,
@@ -44,7 +52,7 @@ const Leaderboard = () => {
           }
         }
       });
-      quizzeMark.map((QMark) => {
+      quizzeMark?.map((QMark) => {
         if (student.id === QMark.student_id) {
           if (topTwenty?.length === 0) {
             const d = {
@@ -77,21 +85,27 @@ const Leaderboard = () => {
       });
     });
   }
-  topTwenty.map((p) => {
-    p.total = p.AssignmentMark + p.QuizMark;
+  topTwenty?.map((p) => {
+    p.total =
+      p?.AssignmentMark !== undefined
+        ? p?.AssignmentMark
+        : 0 + p?.QuizMark !== undefined
+        ? p?.QuizMark
+        : 0;
   });
   topTwenty = topTwenty.sort(function (a, b) {
     return parseFloat(b.total) - parseFloat(a.total);
   });
-  topTwenty.map((p) => {
+  topTwenty?.map((p) => {
     p.rank = topTwenty.findIndex((x) => x.name === p.name);
   });
   console.log("top", topTwenty);
   let content = topTwenty.map((t) => <TopTwenty mark={t}></TopTwenty>);
   let myPosition;
-  topTwenty.map((my) => {
+  topTwenty?.map((my) => {
     if (my.name === user.name) {
       myPosition = my;
+      console.log("myPosition", myPosition);
     }
   });
   return (

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import { useEditAssignmentMutation } from '../../../../features/assignment/assignmentAPI';
 const SingleAssignmentMark = ({assignmentMark}) => {
-    console.log(assignmentMark);
     const [editAssignment]=useEditAssignmentMutation()
     const [assignmentM,setassignmentM]=useState(0);
     const handleSubmit=()=>{

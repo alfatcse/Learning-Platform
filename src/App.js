@@ -26,6 +26,7 @@ import EditVideo from "./Components/AminDashboard/Videos/EditVideo";
 import AddAssignment from "./Components/AminDashboard/Assignment/AssignmentUpload/AddAssignment";
 import EditAssignment from "./Components/AminDashboard/Assignment/AssignmentUpload/EditAssignment";
 import UploadQuzze from "./Components/AminDashboard/Quizzes/UploadQuzze";
+import EditQuizze from "./Components/AminDashboard/Quizzes/EditQuizze";
 
 function App() {
   const authChecked = useAuthCheck();
@@ -96,15 +97,11 @@ function App() {
     },
     {
       path: "/adminlogin",
-      element: (
-       
-          <AdminLogin></AdminLogin>
-        
-      ),
+      element: <AdminLogin></AdminLogin>,
     },
     {
       path: "/admin",
-      element: <Admin></Admin>  ,
+      element: <Admin></Admin>,
       children: [
         {
           path: "/admin/dashboard",
@@ -119,33 +116,37 @@ function App() {
           element: <QuizzesPage></QuizzesPage>,
         },
         {
-          path:'/admin/uploadquizze',
-          element:<UploadQuzze></UploadQuzze>
+          path: "/admin/quizzes/:idquizze",
+          element: <EditQuizze></EditQuizze>,
         },
         {
-          path:"/admin/assignmentupload",
-          element:<AssignmentUpload></AssignmentUpload>
+          path: "/admin/uploadquizze",
+          element: <UploadQuzze></UploadQuzze>,
         },
         {
-          path:"/admin/editassignment/:assignmentid",
-          element:<EditAssignment></EditAssignment>
+          path: "/admin/assignmentupload",
+          element: <AssignmentUpload></AssignmentUpload>,
         },
         {
-          path:"/admin/assignmentpost",
-          element:<AddAssignment></AddAssignment>
+          path: "/admin/editassignment/:assignmentid",
+          element: <EditAssignment></EditAssignment>,
         },
         {
-          path:"/admin/assignmentmark",
-          element:<AssignmentMark></AssignmentMark>
+          path: "/admin/assignmentpost",
+          element: <AddAssignment></AddAssignment>,
         },
         {
-          path:"/admin/addvideo",
-          element:<AddVideo></AddVideo>
+          path: "/admin/assignmentmark",
+          element: <AssignmentMark></AssignmentMark>,
         },
         {
-          path:"/admin/editvideo/:videoid",
-          element:<EditVideo></EditVideo>
-        }
+          path: "/admin/addvideo",
+          element: <AddVideo></AddVideo>,
+        },
+        {
+          path: "/admin/editvideo/:videoid",
+          element: <EditVideo></EditVideo>,
+        },
       ],
     },
   ]);

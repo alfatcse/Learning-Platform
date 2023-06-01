@@ -7,7 +7,6 @@ import SingleQuizzePage from './SingleQuizzePage';
 
 const QuizzesPage = () => {
     const {data,isLoading,isSuccess,isError}=useGetAllQuizzesQuery();
-    console.log(data);
     let content;
     if(isLoading){
         content=<Loading></Loading>

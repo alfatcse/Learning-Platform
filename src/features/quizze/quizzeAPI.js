@@ -9,6 +9,9 @@ export const quizzeAPI = apiSlice.injectEndpoints({
       query: () => "/quizzes",
       providesTags: ["quizzes"],
     }),
+    getSingleQuizze:builder.query({
+      query:(id)=>`/quizzes/${id}`
+    }),
     deleteQuizze: builder.mutation({
       query: (id) => ({
         url: `/quizzes/${id}`,
@@ -20,6 +23,14 @@ export const quizzeAPI = apiSlice.injectEndpoints({
       query:(data)=>({
         url: "/quizzes",
         method:'POST',
+        body:data
+      }),
+      invalidatesTags:['quizzes']
+    }),
+    editQuiz:builder.mutation({
+      query:({id,data})=>({
+        url: `/quizzes/${id}`,
+        method:'PATCH',
         body:data
       }),
       invalidatesTags:['quizzes']
@@ -47,5 +58,7 @@ export const {
   usePostQuizMarkMutation,
   useGetAllQuizzesQuery,
   useDeleteQuizzeMutation,
-  usePostQuizMutation
+  usePostQuizMutation,
+  useGetSingleQuizzeQuery,
+  useEditQuizMutation
 } = quizzeAPI;

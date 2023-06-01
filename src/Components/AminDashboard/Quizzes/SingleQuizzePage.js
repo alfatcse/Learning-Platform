@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import { useDeleteQuizzeMutation } from '../../../features/quizze/quizzeAPI';
 
 const SingleQuizzePage = ({quizze}) => {
@@ -6,8 +7,10 @@ const SingleQuizzePage = ({quizze}) => {
     const handleDelete=()=>{
         deleteQuizze(quizze?.id)
     }
+    const navigate=useNavigate();
     const handleEdit=()=>{
         console.log('edit');
+        navigate(`/admin/quizzes/${quizze?.id}`)
     }
     return (
         <tr>
