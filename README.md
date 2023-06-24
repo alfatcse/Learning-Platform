@@ -1,47 +1,31 @@
-# Getting Started with Create React App and Redux
+# Doctors-Portal
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+### Doctor's portal is an advanced web application that utilizes a powerful stack of technologies, including React, Tailwind CSS, Stripe, JWT (JSON Web Tokens), DaisyUI, Axios, Firebase, Context API, TanStack React Query, React Hooks, and React Router. This comprehensive platform enables patients to sign up, log in, schedule appointments, and make secure transactions, while doctors can register, log in, manage their availability, and provide medical services seamlessly. 
 
-## Available Scripts
+### Project Features
+**User Authentication:** Doctor's-Portal offers a secure and reliable user authentication system. Patients can create accounts, log in, and access personalized features, while doctors can register, log in, and manage their professional profiles.
+**Patient Dashboard:** Patients have access to a user-friendly dashboard upon logging in. They can view their appointment history, manage personal information, and schedule appointments with available doctors.
 
-In the project directory, you can run:
+**Doctor Dashboard:** Doctors have a dedicated dashboard that allows them to manage their professional profile, set availability slots for appointments, and view their appointment history. They can also access patient medical records securely.
 
-### `npm start`
+**Appointment Scheduling:** Patients can search for available doctors, view their profiles, and book appointments based on their availability slots. Doctors can publish their availability slots, manage bookings, and receive notifications for new appointments.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Stripe Integration:** Doctor's-Portal incorporates Stripe, a secure payment gateway, to facilitate seamless and secure transactions. Patients can make payments for their appointments through Stripe, ensuring a smooth and reliable payment process.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Integration with Firebase:** Firebase integration provides a scalable and reliable backend infrastructure for MediConnect. It enables real-time data synchronization, user authentication, and database management, ensuring efficient data handling.
 
-### `npm test`
+**Context API and React Hooks:** Doctor's-Portal utilizes Context API and React Hooks to manage global state and provide a smooth and responsive user interface. These technologies enhance performance and optimize the user experience.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Responsive Design with Tailwind CSS:** Doctor's-Portal follows a responsive design approach using Tailwind CSS, ensuring that the portal is accessible and visually appealing across various devices and screen sizes.
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## View live demo: [www.doctors-portal.com](https://doctors-portal-be73e.web.app/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Demo :movie_camera:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Appreciate Nature (5 second video) (1)](https://media.githubusercontent.com/media/alfatcse/gifTest/main/docPPP.gif)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-# Learning-Platform
